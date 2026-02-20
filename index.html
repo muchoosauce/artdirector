@@ -19,7 +19,6 @@
 
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Transitions de pages */
         .page-view {
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
@@ -30,7 +29,6 @@
             transform: translateY(10px);
         }
 
-        /* Hover sur les rangées de projets */
         .project-row {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: border-color 0.3s ease;
@@ -53,7 +51,6 @@
             transform: scale(1.05);
         }
 
-        /* Animations d'apparition */
         .reveal {
             opacity: 0;
             transform: translateY(10px);
@@ -88,7 +85,6 @@
 </head>
 <body class="selection:bg-white selection:text-black">
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 px-6 py-8 md:px-12 flex justify-between items-start bg-black/50 backdrop-blur-sm">
         <div class="cursor-pointer" onclick="showPage('work')">
             <h1 class="text-xs font-bold uppercase tracking-[0.2em]">Sofiane Dahmani</h1>
@@ -106,12 +102,8 @@
         </div>
     </header>
 
-    <!-- VUE : TRAVAUX (LISTE) -->
     <main id="page-work" class="page-view pt-48 pb-32 px-6 md:px-12 max-w-5xl mx-auto">
-        <section class="space-y-0" id="projects-list">
-            <!-- Les projets sont générés par JavaScript ci-dessous -->
-        </section>
-
+        <section class="space-y-0" id="projects-list"></section>
         <section class="mt-40 reveal max-w-xl">
             <p class="text-zinc-500 text-xs mono uppercase tracking-widest mb-4">About</p>
             <p class="text-xl md:text-2xl font-light leading-relaxed">
@@ -120,22 +112,17 @@
         </section>
     </main>
 
-    <!-- VUE : DÉTAIL DU PROJET (DYNAMIQUE) -->
     <main id="page-project-detail" class="page-view hidden-view pt-48 pb-32 px-6 md:px-12 max-w-5xl mx-auto">
         <button onclick="showPage('work')" class="flex items-center space-x-2 text-[10px] mono uppercase tracking-widest text-zinc-500 hover:text-white transition-colors mb-12">
             <i data-lucide="arrow-left" size="14"></i>
             <span>Back to projects</span>
         </button>
-
-        <div id="project-content">
-            <!-- Contenu injecté dynamiquement -->
-        </div>
+        <div id="project-content"></div>
     </main>
 
-    <!-- VUE : CONTACT -->
     <main id="page-contact" class="page-view hidden-view pt-48 pb-32 px-6 md:px-12 max-w-5xl mx-auto">
         <section class="max-w-2xl">
-            <h2 class="text-5xl md:text-8xl font-light tracking-tighter mb-16">Let’s talk about your project.</h2>
+            <h2 class="text-5xl md:text-8xl font-light tracking-tighter mb-16">Let's talk about your project.</h2>
             <form id="contactForm" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" class="space-y-12">
                 <div class="space-y-2">
                     <label class="text-[10px] mono text-zinc-500 uppercase tracking-widest">Your Name</label>
@@ -157,7 +144,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="p-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] mono text-zinc-600 uppercase tracking-widest">
         <p>© 2026 — ALL RIGHTS DESERVED</p>
         <div class="flex space-x-8">
@@ -171,28 +157,28 @@
     </div>
 
     <script>
-        // DONNÉES DES PROJETS
         const projects = [
             {
-                id: `adidas`,
-                title: `Impossible is nothing - Adidas`,
-                year: `2026`,
-                category: `COMMERCIAL`,
-                image: `https://i.postimg.cc/qMJ0jcK5/Dembele.png`,
-                video: `https://www.youtube.com/embed/zTC77SXvbdM`, 
-                description: 'Advertising campaign telling Ousmane Dembélé&apos;s childhood dream through 6 cinematic shots — from wide establishing frame to emotional macro close-up of eyes reflecting the Ballon d&apos;Or ceremony.',
+                id: 'adidas',
+                title: 'Impossible is nothing - Adidas',
+                year: '2026',
+                category: 'COMMERCIAL',
+                image: 'https://i.postimg.cc/qMJ0jcK5/Dembele.png',
+                video: 'https://youtube.com/shorts/zTC77SXvbdM?feature=share',
+                description: "Advertising campaign telling Ousmane Dembélé's childhood dream through 6 cinematic shots — from wide establishing frame to emotional macro close-up of eyes reflecting the Ballon d'Or ceremony.",
                 details: '',
-                tags: ['Commercial', 'Sport', 'Storytelling']
+                tags: ['Adidas', 'Sport', 'Video']
             },
             {
-                id: 'lost cherry',
+                id: 'lost-cherry',
                 title: 'Lost Cherry - Tom Ford',
                 year: '2026',
                 category: 'COMMERCIAL',
                 image: 'https://i.postimg.cc/P5qDs8gW/freepik_ultrarealistic_luxury_perfume_product_photography_67572.png',
+                video: '',
                 description: 'Un outil de visualisation de données complexes pour les entreprises de logistique.',
-                details: 'Simplification des flux d\'informations massifs en tableaux de bord intuitifs. Focus sur la typographie et la hiérarchie visuelle pour réduire la fatigue cognitive des utilisateurs.',
-                tags: ['Commercial', 'Cosmetic', 'SaaS']
+                details: "Simplification des flux d'informations massifs en tableaux de bord intuitifs.",
+                tags: ['Tom Ford', 'Cosmetic', 'Commercial']
             },
             {
                 id: 'zen-interface',
@@ -200,13 +186,13 @@
                 year: '2023',
                 category: 'MOBILE',
                 image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop',
+                video: '',
                 description: 'Application mobile de méditation et de gestion du sommeil.',
-                details: 'Design basé sur des gradients doux et des micro-animations organiques. L\'objectif était de créer une expérience apaisante dès l\'ouverture de l\'application.',
+                details: "Design basé sur des gradients doux et des micro-animations organiques. L'objectif était de créer une expérience apaisante dès l'ouverture de l'application.",
                 tags: ['App Design', 'iOS/Android', 'Wellness']
             }
         ];
 
-        // INITIALISATION
         function init() {
             renderProjectsList();
             updateClock();
@@ -215,7 +201,6 @@
             handleReveal();
         }
 
-        // AFFICHER LA LISTE DES PROJETS
         function renderProjectsList() {
             const listContainer = document.getElementById('projects-list');
             listContainer.innerHTML = projects.map(p => `
@@ -239,7 +224,13 @@
             lucide.createIcons();
         }
 
-        // OUVRIR UN PROJET
+        function getMediaHTML(project) {
+            if (project.video) {
+                return '<iframe src="' + project.video + '" class="w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+            }
+            return '<img src="' + project.image + '" class="w-full h-full object-cover" alt="' + project.title + '">';
+        }
+
         function openProject(id) {
             const project = projects.find(p => p.id === id);
             if (!project) return;
@@ -250,12 +241,9 @@
                     <span class="text-[10px] mono text-zinc-500 uppercase tracking-widest mb-4 block">${project.year} / ${project.category}</span>
                     <h2 class="text-5xl md:text-8xl font-light tracking-tighter mb-12">${project.title}</h2>
                     
-                 <div class="w-full aspect-video bg-zinc-900 overflow-hidden mb-16 rounded-sm">
-    ${project.video 
-        ? `<iframe src="${project.video}" class="w-full h-full" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`
-        : `<img src="${project.image}" class="w-full h-full object-cover" alt="${project.title}">`
-    }
-</div>
+                    <div class="w-full aspect-video bg-zinc-900 overflow-hidden mb-16 rounded-sm">
+                        ${getMediaHTML(project)}
+                    </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
                         <div class="md:col-span-2">
@@ -270,7 +258,7 @@
                             <div>
                                 <p class="text-[10px] mono text-zinc-500 uppercase tracking-widest mb-4">Services</p>
                                 <div class="flex flex-wrap gap-2">
-                                    ${project.tags.map(tag => `<span class="border border-white/10 px-3 py-1 text-[10px] mono rounded-full">${tag}</span>`).join('')}
+                                    ${project.tags.map(tag => '<span class="border border-white/10 px-3 py-1 text-[10px] mono rounded-full">' + tag + '</span>').join('')}
                                 </div>
                             </div>
                             <div>
@@ -286,16 +274,13 @@
             lucide.createIcons();
         }
 
-        // NAVIGATION SPA
         function showPage(pageId) {
-            const pages = ['page-work', 'page-contact', 'page-project-detail'];
-            pages.forEach(id => {
+            ['page-work', 'page-contact', 'page-project-detail'].forEach(id => {
                 document.getElementById(id).classList.add('hidden-view');
             });
 
-            document.getElementById(`page-${pageId}`).classList.remove('hidden-view');
+            document.getElementById('page-' + pageId).classList.remove('hidden-view');
             
-            // Gestion de l'état actif des menus
             const navWork = document.getElementById('nav-work');
             const navContact = document.getElementById('nav-contact');
             
@@ -311,14 +296,13 @@
             setTimeout(handleReveal, 100);
         }
 
-        // Horloge & Utilitaires
         function updateClock() {
             const now = new Date();
             const time = now.getHours().toString().padStart(2, '0') + ":" + 
                          now.getMinutes().toString().padStart(2, '0') + ":" + 
                          now.getSeconds().toString().padStart(2, '0');
             const clockEl = document.getElementById('clock');
-            if(clockEl) clockEl.textContent = time;
+            if (clockEl) clockEl.textContent = time;
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -331,7 +315,6 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
-        // Formulaire
         document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
             e.preventDefault();
             const toast = document.getElementById('success-toast');
@@ -343,7 +326,6 @@
             }, 2500);
         });
 
-        // Lancement
         window.onload = init;
     </script>
 </body>
